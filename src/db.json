@@ -1,0 +1,354 @@
+{
+  "products": [
+    {
+      "id": "d853226b-87d5-4774-b744-08fe212707f9",
+      "name": "Unbranded Soft Chips",
+      "price": "637.00",
+      "category": "man",
+      "size": "xl"
+    },
+    {
+      "id": "65c48089-fea9-48d0-9484-7dbb11879b96",
+      "name": "Gorgeous Wooden Shoes",
+      "price": "456.00",
+      "category": "man",
+      "size": "l"
+    },
+    {
+      "id": "5feda32c-9407-4d14-b5da-e26995bb398f",
+      "name": "Handmade Rubber Keyboard",
+      "price": "34.00",
+      "category": "woman",
+      "size": "m"
+    },
+    {
+      "id": "3b4ea04c-e787-48ec-ab87-00ace6bac46b",
+      "name": "Intelligent Wooden Car",
+      "price": "220.00",
+      "category": "man",
+      "size": "xl"
+    },
+    {
+      "id": "d59d599e-8f84-4330-b066-662b6867c1ef",
+      "name": "Incredible Concrete Pants",
+      "price": "672.00",
+      "category": "woman",
+      "size": "l"
+    },
+    {
+      "id": "b2b50aca-8fed-4fd0-9fd1-b8cdca7f3aeb",
+      "name": "Rustic Metal Chicken",
+      "price": "365.00",
+      "category": "man",
+      "size": "l"
+    },
+    {
+      "id": "a1a014de-de9c-42fe-b7ce-495e9b26acd8",
+      "name": "Incredible Plastic Chair",
+      "price": "945.00",
+      "category": "woman",
+      "size": "s"
+    },
+    {
+      "id": "c4a8a234-f05b-499d-b5f7-f225cee69805",
+      "name": "Intelligent Metal Pizza",
+      "price": "293.00",
+      "category": "children",
+      "size": "xs"
+    },
+    {
+      "id": "46ef23f9-a880-47a0-98ed-9d7953b099d4",
+      "name": "Handmade Granite Chips",
+      "price": "70.00",
+      "category": "man",
+      "size": "m"
+    },
+    {
+      "id": "8166f353-6285-48a0-af98-d1d742770d03",
+      "name": "Incredible Cotton Bacon",
+      "price": "544.00",
+      "category": "children",
+      "size": "s"
+    },
+    {
+      "id": "8e408629-8075-435e-8f28-ec190fdbab6c",
+      "name": "Practical Steel Table",
+      "price": "406.00",
+      "category": "children",
+      "size": "xs"
+    },
+    {
+      "id": "81b40289-39df-4b82-a38b-ed63f7ba64f9",
+      "name": "Incredible Soft Computer",
+      "price": "131.00",
+      "category": "man",
+      "size": "m"
+    },
+    {
+      "id": "9a93b0d3-55e0-40aa-a68c-6f89f6649aa6",
+      "name": "Tasty Steel Hat",
+      "price": "139.00",
+      "category": "children",
+      "size": "s"
+    },
+    {
+      "id": "5ef7963e-227e-476f-b4dd-0bbfc4c3bf91",
+      "name": "Practical Granite Computer",
+      "price": "752.00",
+      "category": "man",
+      "size": "xl"
+    },
+    {
+      "id": "076150e5-12ec-435c-8712-f498adecb698",
+      "name": "Intelligent Frozen Bike",
+      "price": "664.00",
+      "category": "man",
+      "size": "m"
+    },
+    {
+      "id": "9b90c859-52c2-4f17-950c-5affe12dfc38",
+      "name": "Fantastic Granite Mouse",
+      "price": "565.00",
+      "category": "children",
+      "size": "s"
+    },
+    {
+      "id": "f6c6b44d-8b75-4f06-85da-bb537b6e9a01",
+      "name": "Refined Cotton Salad",
+      "price": "608.00",
+      "category": "man",
+      "size": "m"
+    },
+    {
+      "id": "0a086e90-f723-470e-b638-1dc305299250",
+      "name": "Unbranded Soft Car",
+      "price": "675.00",
+      "category": "man",
+      "size": "m"
+    },
+    {
+      "id": "06bfc576-c90f-4b10-b179-b145c647fa9f",
+      "name": "Refined Steel Shoes",
+      "price": "331.00",
+      "category": "man",
+      "size": "l"
+    },
+    {
+      "id": "7a9170e4-2ba7-4a98-8d1d-a87fbcd6eebc",
+      "name": "Refined Fresh Salad",
+      "price": "457.00",
+      "category": "man",
+      "size": "xl"
+    },
+    {
+      "id": "71d501b7-b2c2-4edf-8775-4eab61911fe7",
+      "name": "Refined Plastic Tuna",
+      "price": "741.00",
+      "category": "children",
+      "size": "xs"
+    },
+    {
+      "id": "4b30403c-61aa-445b-8ca0-12b2dd8b029b",
+      "name": "Tasty Wooden Pants",
+      "price": "581.00",
+      "category": "man",
+      "size": "s"
+    },
+    {
+      "id": "9d4fdba3-04da-4919-bef3-ea4b98d35d78",
+      "name": "Fantastic Granite Gloves",
+      "price": "182.00",
+      "category": "children",
+      "size": "s"
+    },
+    {
+      "id": "bd38ae16-4f20-4a0c-874d-555f90e30b5e",
+      "name": "Handcrafted Rubber Pizza",
+      "price": "140.00",
+      "category": "children",
+      "size": "xs"
+    },
+    {
+      "id": "683895e5-1d1b-4de0-8e62-c2c5da04ff7e",
+      "name": "Small Soft Car",
+      "price": "605.00",
+      "category": "man",
+      "size": "l"
+    },
+    {
+      "id": "b927c34e-9c0d-4fe1-981b-2be9a9d6a803",
+      "name": "Unbranded Fresh Computer",
+      "price": "374.00",
+      "category": "man",
+      "size": "xl"
+    },
+    {
+      "id": "3eddadab-8be5-4713-8736-868c151450a7",
+      "name": "Incredible Granite Computer",
+      "price": "706.00",
+      "category": "woman",
+      "size": "m"
+    },
+    {
+      "id": "309833f0-6e1f-4f9a-a88f-a8e860e7c6e7",
+      "name": "Ergonomic Cotton Shoes",
+      "price": "442.00",
+      "category": "woman",
+      "size": "s"
+    },
+    {
+      "id": "950b1934-fa87-424c-841b-f204e223a56d",
+      "name": "Ergonomic Steel Bacon",
+      "price": "240.00",
+      "category": "woman",
+      "size": "m"
+    },
+    {
+      "id": "4ee3cbb6-a464-4049-8307-55026c4927e9",
+      "name": "Refined Granite Shoes",
+      "price": "381.00",
+      "category": "children",
+      "size": "m"
+    },
+    {
+      "id": "a00ff677-bb7e-4f9b-b195-53845d5c2685",
+      "name": "Ergonomic Concrete Pants",
+      "price": "602.00",
+      "category": "woman",
+      "size": "xs"
+    },
+    {
+      "id": "ace1b8ea-b44c-4aac-ad36-b54e3f992f99",
+      "name": "Handcrafted Rubber Car",
+      "price": "165.00",
+      "category": "children",
+      "size": "xs"
+    },
+    {
+      "id": "42797495-3034-4476-bf43-c0ef0312da3b",
+      "name": "Small Steel Ball",
+      "price": "992.00",
+      "category": "woman",
+      "size": "s"
+    },
+    {
+      "id": "6a661f99-f3fb-44c3-9f04-e709f570d635",
+      "name": "Handmade Rubber Fish",
+      "price": "138.00",
+      "category": "children",
+      "size": "m"
+    },
+    {
+      "id": "9ba93e3b-fb1f-49b9-93b5-5e48149679a6",
+      "name": "Licensed Concrete Fish",
+      "price": "745.00",
+      "category": "woman",
+      "size": "m"
+    },
+    {
+      "id": "aa14ad86-a8d3-4f66-8160-0c7233a4b308",
+      "name": "Unbranded Steel Mouse",
+      "price": "902.00",
+      "category": "woman",
+      "size": "l"
+    },
+    {
+      "id": "f48c653c-3e02-407e-9fef-0bcdc7688a50",
+      "name": "Awesome Frozen Pants",
+      "price": "191.00",
+      "category": "children",
+      "size": "s"
+    },
+    {
+      "id": "30405971-9b6b-48b1-a6f1-ceea6e30b9a9",
+      "name": "Rustic Frozen Gloves",
+      "price": "533.00",
+      "category": "woman",
+      "size": "m"
+    },
+    {
+      "id": "d35c7bf6-0c54-4ac3-99f9-a4dafbe49a6b",
+      "name": "Tasty Soft Bike",
+      "price": "592.00",
+      "category": "woman",
+      "size": "xs"
+    },
+    {
+      "id": "a57b3cf0-3a04-4682-a481-d976575f2dc5",
+      "name": "Awesome Rubber Towels",
+      "price": "54.00",
+      "category": "woman",
+      "size": "s"
+    },
+    {
+      "id": "8bafae22-4a73-42da-8741-3b6baf791d79",
+      "name": "Ergonomic Metal Car",
+      "price": "398.00",
+      "category": "children",
+      "size": "s"
+    },
+    {
+      "id": "40c27a77-6ee1-4efd-9eb8-d338aa2affd2",
+      "name": "Unbranded Plastic Shoes",
+      "price": "604.00",
+      "category": "children",
+      "size": "xs"
+    },
+    {
+      "id": "23e29831-b12e-4839-9a7b-2f63a453fe43",
+      "name": "Practical Wooden Chicken",
+      "price": "198.00",
+      "category": "children",
+      "size": "xs"
+    },
+    {
+      "id": "6f65ee0b-8919-4d56-a2d8-823d912f7b92",
+      "name": "Practical Rubber Mouse",
+      "price": "119.00",
+      "category": "woman",
+      "size": "m"
+    },
+    {
+      "id": "fe26ec4e-2992-4dc7-982c-e539f3cd82ee",
+      "name": "Gorgeous Concrete Computer",
+      "price": "977.00",
+      "category": "woman",
+      "size": "l"
+    },
+    {
+      "id": "b51fa308-1556-491b-8d31-d53824867d01",
+      "name": "Handmade Granite Car",
+      "price": "887.00",
+      "category": "woman",
+      "size": "m"
+    },
+    {
+      "id": "06d54051-c495-468a-802b-b10d54d9baaf",
+      "name": "Sleek Plastic Soap",
+      "price": "19.00",
+      "category": "children",
+      "size": "s"
+    },
+    {
+      "id": "794a4a26-ad85-4da5-a43f-aaa221e7e803",
+      "name": "Practical Soft Chips",
+      "price": "48.00",
+      "category": "children",
+      "size": "s"
+    },
+    {
+      "id": "bb0641ad-50e4-4ace-8b2b-5be8f0a31e85",
+      "name": "Refined Cotton Bike",
+      "price": "439.00",
+      "category": "woman",
+      "size": "s"
+    },
+    {
+      "id": "5fffd8a7-1543-4c97-9f3e-dab117152745",
+      "name": "Gorgeous Plastic Chicken",
+      "price": "531.00",
+      "category": "woman",
+      "size": "m"
+    }
+  ]
+}

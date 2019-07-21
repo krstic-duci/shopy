@@ -16,6 +16,14 @@
     >
       About
     </router-link>
+
+    <!-- Products -->
+    <router-link
+      to="/products"
+      :class="$style.nav__link"
+    >
+      Products
+    </router-link>
   </nav>
 </template>
 
