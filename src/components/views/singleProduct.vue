@@ -1,13 +1,16 @@
 <template>
   <section>
-    <p
-      :class="$style.loading__text"
-      v-if="loading"
-    >
-      Please wait while we fetch the products for you...
-    </p>
+
+    <loading-text :loadingProp='loading' />
 
     <div v-if="!loading">
+      <!-- Back to Products -->
+      <section>
+        <router-link :to="{name: 'products'}">
+          Back To Products...
+        </router-link>
+      </section>
+      <!-- Single Product Details -->
       <section>
         <h3>{{singleProduct.name}}</h3>
         <p>$ {{singleProduct.price}}</p>
@@ -28,6 +31,9 @@ export default {
       singleProduct: []
     }
   },
+  components: {
+    'loading-text': () => import('@/components/commons/LoadingText')
+  },
   created () {
     ProductsApi.getSingleProduct(this.$route.params.id)
       .then(singleProduct => {
@@ -39,17 +45,10 @@ export default {
       .finally(() => {
         this.loading = false
       })
-  },
-  computed: {
-    test () {
-      return this.$route.params.id
-    }
   }
 }
 </script>
 
 <style module>
-  .loading__text {
-    color: red;
-  }
+
 </style>

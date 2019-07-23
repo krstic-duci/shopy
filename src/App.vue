@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <the-header></the-header>
-    <router-view/>
+    <transition name="fade" mode="out-in">
+      <router-view/>
+    </transition>
   </div>
 </template>
 
@@ -15,10 +17,15 @@ export default {
 </script>
 
 <style>
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 body {
   margin: 0;
   padding: 0;
-  background-color: #d1d1d1;
+  background-color: #FEFDFB;
 }
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
@@ -29,5 +36,18 @@ body {
   max-width: 1200px;
   padding: 0 20px;
   margin: 0 auto;
+}
+.router-link-exact-active {
+  color: #f48924 !important;
+  text-decoration: underline !important;
+}
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .3s ease-in-out;
+}
+
+.fade-enter,
+.fade-leave-active {
+  opacity: 0
 }
 </style>

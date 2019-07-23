@@ -19,7 +19,8 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ '@/components/views/About.vue')
+      component: () =>
+        import(/* webpackChunkName: "about" */ '@/components/views/About.vue')
     },
     {
       path: '/products',
@@ -27,7 +28,10 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (products.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "products" */ '@/components/views/Products.vue')
+      component: () =>
+        import(
+          /* webpackChunkName: "products" */ '@/components/views/Products.vue'
+        )
     },
     {
       path: '/products/:id',
@@ -35,7 +39,10 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (singleProduct.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "products" */ '@/components/views/singleProduct.vue')
+      component: () =>
+        import(
+          /* webpackChunkName: "singleProduct" */ '@/components/views/singleProduct.vue'
+        )
     }
   ]
 })

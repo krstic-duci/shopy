@@ -1,38 +1,66 @@
 <template>
   <div :class="$style.category__wrapper">
     <h2>Categories</h2>
-    <!-- Men Category -->
-    <!-- <router-link>
+    <ul :class="$style.category__wrapper__list">
 
-    </router-link> -->
-    <!-- Woman Category -->
-    <!-- <router-link>
+     <li
+      v-for="(entry, index) in filterList"
+      :key="index"
+     >
+      <span
+        @click="filterByCategory(entry)"
+        :class="{ [$style.active__filter]:  activeIndex === entry && !noCategoryActiveFilterProp}"
+      >
+        {{entry}}
+      </span>
+     </li>
 
-    </router-link> -->
-    <!-- Children Category -->
-    <!-- <router-link>
-
-    </router-link> -->
-    <!-- Hot Deals -->
-    <!-- <router-link>
-
-    </router-link> -->
-    <!-- All -->
-    <!-- <router-link>
-
-    </router-link> -->
+    </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'FiltersCategories'
+  name: 'filtersCategories',
+  data () {
+    return {
+      filterList: ['man', 'woman', 'children', 'all'],
+      activeIndex: ''
+    }
+  },
+  props: {
+    noCategoryActiveFilterProp: {
+      type: Boolean,
+      required: true
+    }
+  },
+  methods: {
+    filterByCategory (itemCategory) {
+      this.activeIndex = itemCategory
+      this.$emit('itemCategory', itemCategory)
+    }
+  }
 }
 </script>
 
 <style module>
   .category__wrapper {
     background-color: #fff;
-    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 6px 1px rgba(66, 184, 131, 0.8);
+  }
+  .category__wrapper__list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  .category__wrapper__list li {
+    margin: 15px 0;
+  }
+  .category__wrapper__list li span {
+    padding: 5px 20px;
+    cursor: pointer;
+  }
+  .active__filter {
+    color: #f48924;
+    text-decoration: underline;
   }
 </style>

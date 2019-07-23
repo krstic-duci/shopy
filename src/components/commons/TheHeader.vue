@@ -34,7 +34,20 @@ export default {
 </script>
 
 <style module>
+  .nav__box {
+    padding: 15px;
+    margin: 10px 0 20px;
+  }
   .nav__link {
-    margin-left: 15px;
+    margin-left: 25px;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 10px;
+    color: #42b883;
+    transition: color .3s ease-in-out;
+  }
+  .nav__link:hover {
+    color: #f48924;
+    text-decoration: underline;
   }
 </style>
