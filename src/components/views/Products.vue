@@ -11,7 +11,7 @@
         <!-- Category -->
         <filter-categories
           @itemCategory='categoryFilter'
-          :noCategoryActiveFilterProp='noCategoryActiveFilter'
+          :noFilterPaginationProp='noFilterPagination'
         />
       </div>
 
@@ -55,16 +55,15 @@
             </button>
           </div>
         </section>
-
-        <!-- NO FILTER DATA -->
-        <section
-          v-if="noFilterData"
-          :class="$style.no__filter__wrapper"
-        >
-          <p>There are no products for selected filter, please choose another...</p>
-        </section>
-
       </transition>
+
+      <!-- NO FILTER DATA -->
+      <section
+        v-if="noFilterData"
+        :class="$style.no__filter__wrapper"
+      >
+        <p>There are no products for selected filter, please choose another...</p>
+      </section>
 
     </section>
   </div>
@@ -81,11 +80,11 @@ export default {
       noNextClick: false,
       noPrevClick: false,
       noFilterData: false,
-      noCategoryActiveFilter: false,
       loading: true,
       products: [],
       currentFilterCategory: '',
-      filterProducts: []
+      filterProducts: [],
+      noFilterPagination: false
     }
   },
   components: {
@@ -99,15 +98,16 @@ export default {
     initialProducts () {
       ProductsApi.getProducts(this.paginationNumber)
         .then(products => {
+          const productRes = products.data
+          let totalCountProds = products.headers['x-total-count']
           // Keep the reactivity for pagination
           if (this.paginationNumber === 1) {
             this.noPrevClick = true
+          } else if ((totalCountProds / 16) <= this.paginationNumber) {
+            this.noNextClick = true
           }
-          // else if ((this.filterProducts.length / 2) <= this.paginationNumber) {
-          //   this.noNextClick = true
-          // }
           // Keep the copy of products from API for filtering
-          this.filterProducts = [...products]
+          this.filterProducts = [...productRes]
           // Keep the copy of original array of products for inital load
           this.products = [...this.filterProducts]
         })
@@ -143,22 +143,28 @@ export default {
         this.noFilterData = true
       }
     },
-    loadMoreProducts () {
-      if ((this.filterProducts.length / 2) <= this.paginationNumber) {
-        return
-      }
-      this.paginationNumber++
-      this.initialProducts()
-      this.noPrevClick = false
-      window.scrollTo(0, 0)
-    },
     loadPrevProducts () {
+      // Cannot have negative pagination
       if (this.paginationNumber <= 0) {
         return
       }
       this.paginationNumber--
       this.initialProducts()
+      this.noFilterPagination = true
+      // Disable next click on button
       this.noNextClick = false
+      window.scrollTo(0, 0)
+    },
+    loadMoreProducts () {
+      // If there are no more product to be loaded, do not bother the server
+      if ((this.filterProducts.length / 2) <= this.paginationNumber) {
+        return
+      }
+      this.paginationNumber++
+      this.initialProducts()
+      this.noFilterPagination = true
+      // Disable previous click on button
+      this.noPrevClick = false
       window.scrollTo(0, 0)
     }
   }

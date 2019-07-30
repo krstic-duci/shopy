@@ -4,8 +4,7 @@ export default {
   async getProducts (pageNum) {
     try {
       const response = await axios.get('/products?_page=' + pageNum + '&_limit=16')
-      console.log(response.headers.link)
-      return response.data
+      return response
     } catch (error) {
       console.error('Error in /products API call', error)
     }
@@ -21,7 +20,6 @@ export default {
   async getfilterCategory (category) {
     try {
       const response = await axios.get('/products/?category=man')
-      console.log()
       return response.data
     } catch (error) {
       console.error('Error in /products/?category API call', error)
