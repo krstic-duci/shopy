@@ -9,10 +9,11 @@
       <!-- FILTERS -->
       <div :class="$style.filter__wrapper">
         <!-- Category -->
-        <filter-categories
+        <products-filter
           @itemCategory='categoryFilter'
           :noFilterPaginationProp='noFilterPagination'
-        />
+        >
+        </products-filter>
       </div>
 
       <!-- PRODUCTS -->
@@ -31,7 +32,7 @@
             <p>{{elem.category}}</p>
             <p>{{elem.size}}</p>
             <router-link
-              :to="{name: 'singleProduct', params: {id: elem.id}}"
+              :to="{name: 'singleProductView', params: {id: elem.id}}"
             >
               See More...
             </router-link>
@@ -70,10 +71,10 @@
 </template>
 
 <script>
-import ProductsApi from '@/api/Products'
+import { getProducts } from '@/api/Products'
 
 export default {
-  name: 'products',
+  name: 'productsView',
   data () {
     return {
       paginationNumber: 1,
@@ -88,15 +89,15 @@ export default {
     }
   },
   components: {
-    'filter-categories': () => import('@/components/commons/FilterCategories'),
-    'loading-text': () => import('@/components/commons/LoadingText')
+    'products-filter': () => import('@/components/commons/ProductsFilter'),
+    'loading-text': () => import('@/components/commons/BaseLoading')
   },
   created () {
     this.initialProducts()
   },
   methods: {
     initialProducts () {
-      ProductsApi.getProducts(this.paginationNumber)
+      getProducts(this.paginationNumber)
         .then(products => {
           const productRes = products.data
           let totalCountProds = products.headers['x-total-count']

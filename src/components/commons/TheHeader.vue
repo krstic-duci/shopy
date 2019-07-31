@@ -1,9 +1,9 @@
-<template>
+<template functional>
   <nav :class="$style.nav__box">
 
     <!-- Home -->
     <router-link
-      to="/"
+      :to="{ name: 'homeView' }"
       :class="$style.nav__link"
     >
       Home
@@ -11,7 +11,7 @@
 
     <!-- About -->
     <router-link
-      to="/about"
+      :to="{ name: 'aboutView' }"
       :class="$style.nav__link"
     >
       About
@@ -19,19 +19,13 @@
 
     <!-- Products -->
     <router-link
-      to="/products"
+      :to="{ name: 'productsView' }"
       :class="$style.nav__link"
     >
       Products
     </router-link>
   </nav>
 </template>
-
-<script>
-export default {
-  name: 'TheHeader'
-}
-</script>
 
 <style module>
   .nav__box {

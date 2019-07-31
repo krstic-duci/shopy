@@ -1,4 +1,4 @@
-<template>
+<template functional>
   <p
     :class="$style.loading__text"
     v-if="loadingProp"
@@ -9,6 +9,7 @@
 
 <script>
 export default {
+  name: 'loadingText',
   props: {
     loadingProp: {
       type: Boolean,

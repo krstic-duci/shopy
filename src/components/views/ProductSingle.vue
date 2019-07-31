@@ -4,11 +4,14 @@
     <loading-text :loadingProp='loading' />
 
     <div v-if="!loading">
-      <!-- Back to Products -->
+      <!-- Back -->
       <section>
-        <router-link :to="{name: 'products'}">
-          Back To Products...
-        </router-link>
+        <a
+          @click="{backLink}"
+          :class="$style.back__link"
+        >
+          Back...
+        </a>
       </section>
       <!-- Single Product Details -->
       <section>
@@ -21,21 +24,26 @@
 </template>
 
 <script>
-import ProductsApi from '@/api/Products'
+import { getSingleProduct } from '@/api/Products'
 
 export default {
-  name: 'singleProduct',
+  name: 'singleProductView',
   data () {
     return {
       loading: true,
       singleProduct: []
     }
   },
+  computed: {
+    backLink () {
+      return this.$router.go(-1)
+    }
+  },
   components: {
-    'loading-text': () => import('@/components/commons/LoadingText')
+    'loading-text': () => import('@/components/commons/BaseLoading')
   },
   created () {
-    ProductsApi.getSingleProduct(this.$route.params.id)
+    getSingleProduct(this.$route.params.id)
       .then(singleProduct => {
         this.singleProduct = singleProduct
       })
@@ -50,5 +58,8 @@ export default {
 </script>
 
 <style module>
-
+  .back__link {
+    text-decoration: underline;
+    cursor: pointer;
+  }
 </style>

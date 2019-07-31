@@ -10,39 +10,66 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
+      name: 'homeView',
       component: Home
     },
     {
       path: '/about',
-      name: 'about',
+      name: 'aboutView',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () =>
-        import(/* webpackChunkName: "about" */ '@/components/views/About.vue')
+        import(
+          /* webpackChunkName: "aboutView" */ '@/components/views/About.vue'
+        ),
+      children: [
+        {
+          path: 'company',
+          name: 'aboutCompany',
+          component: () =>
+            import(
+              /* webpackChunkName: "aboutView" */ '@/components/commons/AboutCompany.vue'
+            )
+        },
+        {
+          path: 'alumni',
+          name: 'aboutAlumni',
+          components: {
+            default: () => import(/* webpackChunkName: "aboutView" */ '@/components/commons/AboutAlumni.vue'),
+            alumniRouterView: () => import(/* webpackChunkName: "aboutView" */ '@/components/commons/AboutAlumniHelp.vue')
+          }
+        }
+      ]
     },
     {
       path: '/products',
-      name: 'products',
+      name: 'productsView',
       // route level code-splitting
-      // this generates a separate chunk (products.[hash].js) for this route
+      // this generates a separate chunk (Products.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(
-          /* webpackChunkName: "products" */ '@/components/views/Products.vue'
+          /* webpackChunkName: "productsView" */ '@/components/views/Products.vue'
         )
     },
     {
       path: '/products/:id',
-      name: 'singleProduct',
+      name: 'singleProductView',
       // route level code-splitting
-      // this generates a separate chunk (singleProduct.[hash].js) for this route
+      // this generates a separate chunk (ProductSingle.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(
-          /* webpackChunkName: "singleProduct" */ '@/components/views/singleProduct.vue'
+          /* webpackChunkName: "singleProductView" */ '@/components/views/ProductSingle.vue'
         )
+    },
+    {
+      path: '*',
+      component: Home
     }
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  }
 })

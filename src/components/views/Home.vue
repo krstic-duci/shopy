@@ -5,7 +5,8 @@
     <loading-text
       v-if="hotDealsProducts.length && loading"
       :loadingProp='loading'
-    />
+    >
+    </loading-text>
     <div
       v-else
       :class="$style.hot__deals__wrapper"
@@ -18,7 +19,7 @@
         <h4>{{elem.name}}</h4>
         <p>$ {{elem.price}}</p>
         <p>Size: {{elem.size}}</p>
-        <router-link :to="{name: 'singleProduct', params: {id: elem.id}}">
+        <router-link :to="{ name: 'singleProductView', params: { id: elem.id } }">
           See new product...
         </router-link>
       </section>
@@ -27,10 +28,10 @@
 </template>
 
 <script>
-import ProductsApi from '@/api/Products'
+import { getHotDeals } from '@/api/Products'
 
 export default {
-  name: 'home',
+  name: 'homeView',
   data () {
     return {
       loading: true,
@@ -38,14 +39,14 @@ export default {
     }
   },
   components: {
-    'loading-text': () => import('@/components/commons/LoadingText')
+    'loading-text': () => import('@/components/commons/BaseLoading')
   },
   mounted () {
     this.fetchHotDeals()
   },
   methods: {
     fetchHotDeals () {
-      ProductsApi.getHotDeals()
+      getHotDeals()
         .then(response => {
           this.hotDealsProducts = response
         })
