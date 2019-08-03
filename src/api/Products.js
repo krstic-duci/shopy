@@ -9,18 +9,28 @@ const getSingleProduct = async (id) => {
   }
 }
 
+const getProductsBySearch = async (searchBy) => {
+  try {
+    const response = await axios.get(`/products?q=${searchBy}`)
+    console.log(response)
+    return response.data
+  } catch (error) {
+    console.error('Error in /products?q=... API call', error)
+  }
+}
+
 const getfilterCategory = async (category) => {
   try {
-    const response = await axios.get('/products/?category=man')
+    const response = await axios.get(`/products/?category=${category}`)
     return response.data
   } catch (error) {
     console.error('Error in /products/?category API call', error)
   }
 }
 
-const getProducts = async (pageNum) => {
+const getProducts = async (pageNum, perPage) => {
   try {
-    const response = await axios.get('/products?_page=' + pageNum + '&_limit=16')
+    const response = await axios.get(`/products?_page=${pageNum}&_limit=${perPage}`)
     return response
   } catch (error) {
     console.error('Error in /products API call', error)
@@ -38,6 +48,7 @@ const getHotDeals = async () => {
 
 export {
   getSingleProduct,
+  getProductsBySearch,
   getfilterCategory,
   getProducts,
   getHotDeals

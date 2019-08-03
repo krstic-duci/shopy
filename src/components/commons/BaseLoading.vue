@@ -3,7 +3,7 @@
     :class="$style.loading__text"
     v-if="loadingProp"
   >
-    Please wait while we fetch the product for you...
+    Please wait while we fetch the products for you...
   </p>
 </template>
 

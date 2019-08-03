@@ -9,11 +9,20 @@
       <!-- FILTERS -->
       <div :class="$style.filter__wrapper">
         <!-- Category -->
-        <products-filter
+        <products-category
           @itemCategory='categoryFilter'
-          :noFilterPaginationProp='noFilterPagination'
         >
-        </products-filter>
+        </products-category>
+        <!-- Limit -->
+        <products-limit
+          @itemLimit='limitFilter'
+        >
+        </products-limit>
+        <!-- Search Item -->
+        <search-item
+          @itemSearch='searchFilter'
+        >
+        </search-item>
       </div>
 
       <!-- PRODUCTS -->
@@ -56,57 +65,61 @@
             </button>
           </div>
         </section>
-      </transition>
 
-      <!-- NO FILTER DATA -->
-      <section
-        v-if="noFilterData"
-        :class="$style.no__filter__wrapper"
-      >
-        <p>There are no products for selected filter, please choose another...</p>
-      </section>
+        <!-- NO FILTER DATA -->
+        <section
+          v-else
+          :class="$style.no__filter__wrapper"
+        >
+          <p>There are no products for selected filter, please choose another...</p>
+        </section>
+      </transition>
 
     </section>
   </div>
 </template>
 
 <script>
-import { getProducts } from '@/api/Products'
+import { getProducts, getProductsBySearch } from '@/api/Products'
 
 export default {
   name: 'productsView',
+  components: {
+    'products-category': () => import('@/components/commons/products/ProductsCategory'),
+    'products-limit': () => import('@/components/commons/products/ProductsLimit'),
+    'search-item': () => import('@/components/commons/products/ProductsSearch'),
+    'loading-text': () => import('@/components/commons/BaseLoading')
+  },
   data () {
     return {
       paginationNumber: 1,
+      limitNumber: 16,
+      productsLength: 0,
       noNextClick: false,
       noPrevClick: false,
-      noFilterData: false,
       loading: true,
       products: [],
       currentFilterCategory: '',
-      filterProducts: [],
-      noFilterPagination: false
+      filterProducts: []
     }
-  },
-  components: {
-    'products-filter': () => import('@/components/commons/ProductsFilter'),
-    'loading-text': () => import('@/components/commons/BaseLoading')
   },
   created () {
     this.initialProducts()
   },
   methods: {
     initialProducts () {
-      getProducts(this.paginationNumber)
+      getProducts(this.paginationNumber, this.limitNumber)
         .then(products => {
           const productRes = products.data
-          let totalCountProds = products.headers['x-total-count']
+          this.productsLength = products.headers['x-total-count']
+
           // Keep the reactivity for pagination
           if (this.paginationNumber === 1) {
             this.noPrevClick = true
-          } else if ((totalCountProds / 16) <= this.paginationNumber) {
+          } else if ((this.productsLength / this.limitNumber) <= this.paginationNumber) {
             this.noNextClick = true
           }
+
           // Keep the copy of products from API for filtering
           this.filterProducts = [...productRes]
           // Keep the copy of original array of products for inital load
@@ -120,7 +133,7 @@ export default {
         })
     },
     categoryFilter (value) {
-      // Grab the value from FilterCategories.vue clicked value
+      // Grab the value from ProductsCategory.vue clicked value
       // and store it
       this.currentFilterCategory = value
 
@@ -137,12 +150,22 @@ export default {
       this.filterProducts = this.filterProducts.filter(elem =>
         elem.category === this.currentFilterCategory
       )
-
-      // When no filtered data is present
-      // show the message
-      if (!this.filterProducts.length) {
-        this.noFilterData = true
-      }
+    },
+    limitFilter (valueLimit) {
+      this.limitNumber = valueLimit
+      this.initialProducts()
+    },
+    searchFilter (valueSearch) {
+      getProductsBySearch(valueSearch)
+        .then(products => {
+          this.filterProducts = [...products]
+        })
+        .catch(err => {
+          console.error('Cannot search products', err)
+        })
+        .finally(() => {
+          this.loading = false
+        })
     },
     loadPrevProducts () {
       // Cannot have negative pagination
@@ -151,19 +174,17 @@ export default {
       }
       this.paginationNumber--
       this.initialProducts()
-      this.noFilterPagination = true
       // Disable next click on button
       this.noNextClick = false
       window.scrollTo(0, 0)
     },
     loadMoreProducts () {
       // If there are no more product to be loaded, do not bother the server
-      if ((this.filterProducts.length / 2) <= this.paginationNumber) {
+      if ((this.productsLength / this.limitNumber) <= this.paginationNumber) {
         return
       }
       this.paginationNumber++
       this.initialProducts()
-      this.noFilterPagination = true
       // Disable previous click on button
       this.noPrevClick = false
       window.scrollTo(0, 0)
@@ -181,6 +202,9 @@ export default {
   .filter__wrapper {
     flex: 1 1 28%;
     max-width: 28%;
+    position: sticky;
+    top: 20px;
+    height: 50%;
   }
   .no__filter__wrapper {
     flex: 1 1 70%;
@@ -192,6 +216,7 @@ export default {
     flex-flow: row wrap;
     flex: 1 1 70%;
     max-width: 70%;
+    margin-top: -10px;
   }
   .products__wrapper .product__card {
     flex: 1 1 48%;
@@ -199,7 +224,7 @@ export default {
     background-color: #fff;
     box-shadow: 0 0 6px 1px rgba(66, 184, 131, 0.8);
     margin: 10px 0;
-    padding: 5px;
+    padding: 11px;
   }
   .pagination__wrapper {
     margin: 20px 0;

@@ -28,6 +28,9 @@ import { getSingleProduct } from '@/api/Products'
 
 export default {
   name: 'singleProductView',
+  components: {
+    'loading-text': () => import('@/components/commons/BaseLoading')
+  },
   data () {
     return {
       loading: true,
@@ -38,9 +41,6 @@ export default {
     backLink () {
       return this.$router.go(-1)
     }
-  },
-  components: {
-    'loading-text': () => import('@/components/commons/BaseLoading')
   },
   created () {
     getSingleProduct(this.$route.params.id)

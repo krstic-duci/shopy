@@ -29,15 +29,21 @@ export default new Router({
           name: 'aboutCompany',
           component: () =>
             import(
-              /* webpackChunkName: "aboutView" */ '@/components/commons/AboutCompany.vue'
+              /* webpackChunkName: "aboutView" */ '@/components/commons/about/AboutCompany.vue'
             )
         },
         {
           path: 'alumni',
           name: 'aboutAlumni',
           components: {
-            default: () => import(/* webpackChunkName: "aboutView" */ '@/components/commons/AboutAlumni.vue'),
-            alumniRouterView: () => import(/* webpackChunkName: "aboutView" */ '@/components/commons/AboutAlumniHelp.vue')
+            default: () =>
+              import(
+                /* webpackChunkName: "aboutView" */ '@/components/commons/about/AboutAlumni.vue'
+              ),
+            alumniRouterView: () =>
+              import(
+                /* webpackChunkName: "aboutView" */ '@/components/commons/about/AboutAlumniHelp.vue'
+              )
           }
         }
       ]
@@ -68,8 +74,5 @@ export default new Router({
       path: '*',
       component: Home
     }
-  ],
-  scrollBehavior (to, from, savedPosition) {
-    return { x: 0, y: 0 }
-  }
+  ]
 })

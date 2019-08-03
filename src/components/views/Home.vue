@@ -1,18 +1,15 @@
 <template>
   <section :class="$style.home__box">
-
     <!-- HOT DEALS PRODUCTS -->
     <loading-text
-      v-if="hotDealsProducts.length && loading"
       :loadingProp='loading'
     >
     </loading-text>
     <div
-      v-else
       :class="$style.hot__deals__wrapper"
     >
       <section
-        v-for="elem in hotDealsProducts"
+        v-for="elem in ALL_HOT_PRODUCTS"
         :key="elem.id"
         :class="$style.hot__deals__wrapper__item"
       >
@@ -28,35 +25,25 @@
 </template>
 
 <script>
-import { getHotDeals } from '@/api/Products'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'homeView',
-  data () {
-    return {
-      loading: true,
-      hotDealsProducts: []
-    }
-  },
   components: {
     'loading-text': () => import('@/components/commons/BaseLoading')
   },
-  mounted () {
-    this.fetchHotDeals()
-  },
-  methods: {
-    fetchHotDeals () {
-      getHotDeals()
-        .then(response => {
-          this.hotDealsProducts = response
-        })
-        .catch(err => {
-          console.error('Cannot fetch products', err)
-        })
-        .finally(() => {
-          this.loading = false
-        })
+  data () {
+    return {
+      loading: true
     }
+  },
+  computed: {
+    ...mapGetters([
+      'ALL_HOT_PRODUCTS'
+    ])
+  },
+  beforeCreate () {
+    this.$store.dispatch('GET_HOT_PRODUCTS')
   }
 }
 </script>

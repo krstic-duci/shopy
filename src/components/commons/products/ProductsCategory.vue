@@ -1,8 +1,7 @@
 <template>
   <div :class="$style.category__wrapper">
-    <h2>Categories</h2>
-    <h1>{{filterInside}}</h1>
-    <h1>{{noFilterPaginationProp}}</h1>
+    <h3>Categories: </h3>
+    <!-- <h1>{{onChildFilter}}</h1> -->
     <ul :class="$style.category__wrapper__list">
 
      <li
@@ -11,7 +10,9 @@
      >
       <span
         @click="filterByCategory(entry)"
-        :class="{ [$style.active__filter]:  activeIndex === entry && !filterInside}"
+        :class="{
+          [$style.active__filter]: activeIndex === entry
+        }"
       >
         {{entry}}
       </span>
@@ -23,24 +24,14 @@
 
 <script>
 export default {
-  name: 'filtersCategories',
+  name: 'productsCategories',
   data () {
     return {
       filterList: ['man', 'woman', 'children', 'all'],
-      activeIndex: '',
-      filterInside: false
-    }
-  },
-  props: {
-    noFilterPaginationProp: {
-      type: Boolean,
-      default: false
+      activeIndex: ''
     }
   },
   methods: {
-    test () {
-      this.filterInside = this.noFilterPaginationProp
-    },
     filterByCategory (itemCategory) {
       this.activeIndex = itemCategory
       this.$emit('itemCategory', itemCategory)
@@ -53,6 +44,8 @@ export default {
   .category__wrapper {
     background-color: #fff;
     box-shadow: 0 0 6px 1px rgba(66, 184, 131, 0.8);
+    padding: 5px;
+    margin-bottom: 20px;
   }
   .category__wrapper__list {
     list-style-type: none;

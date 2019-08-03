@@ -19,10 +19,10 @@
 
     </section>
 
-    <!-- About Company -->
+    <!-- About Company, About Alumni -->
     <router-view></router-view>
 
-    <!-- About Alumni -->
+    <!-- About Alumni Help -->
     <router-view name="alumniRouterView"></router-view>
   </div>
 </template>
