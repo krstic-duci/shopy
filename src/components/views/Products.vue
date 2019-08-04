@@ -23,6 +23,8 @@
           @itemSearch='searchFilter'
         >
         </search-item>
+        <!-- Clear Filter -->
+        <clear-filter></clear-filter>
       </div>
 
       <!-- PRODUCTS -->
@@ -88,6 +90,7 @@ export default {
     'products-category': () => import('@/components/commons/products/ProductsCategory'),
     'products-limit': () => import('@/components/commons/products/ProductsLimit'),
     'search-item': () => import('@/components/commons/products/ProductsSearch'),
+    'clear-filter': () => import('@/components/commons/products/ProductsClearFilters'),
     'loading-text': () => import('@/components/commons/BaseLoading')
   },
   data () {

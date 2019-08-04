@@ -5,11 +5,14 @@
       :loadingProp='loading'
     >
     </loading-text>
+
+    <h2>Hot new deals...</h2>
+
     <div
       :class="$style.hot__deals__wrapper"
     >
       <section
-        v-for="elem in ALL_HOT_PRODUCTS"
+        v-for="elem in allHotProducts"
         :key="elem.id"
         :class="$style.hot__deals__wrapper__item"
       >
@@ -25,7 +28,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   name: 'homeView',
@@ -38,12 +41,15 @@ export default {
     }
   },
   computed: {
-    ...mapGetters([
-      'ALL_HOT_PRODUCTS'
-    ])
+    ...mapGetters({
+      allHotProducts: 'home/ALL_HOT_PRODUCTS'
+    }),
+    ...mapActions({
+      getHotProducts: 'home/GET_HOT_PRODUCTS'
+    })
   },
-  beforeCreate () {
-    this.$store.dispatch('GET_HOT_PRODUCTS')
+  created () {
+    return this.getHotProducts
   }
 }
 </script>
@@ -56,6 +62,7 @@ export default {
     flex-flow: row wrap;
     justify-content: space-evenly;
     align-items: center;
+    margin-bottom: 20px;
   }
   .hot__deals__wrapper__item {
     flex: 1 1 33.33%;

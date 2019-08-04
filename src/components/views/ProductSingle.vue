@@ -43,6 +43,10 @@ export default {
     }
   },
   created () {
+    //
+    // @description - Call /products/:id for fetching the single products details
+    // @param - { String } this.$route.params.id (The random uuid from db.json for that product)
+    //
     getSingleProduct(this.$route.params.id)
       .then(singleProduct => {
         this.singleProduct = singleProduct
