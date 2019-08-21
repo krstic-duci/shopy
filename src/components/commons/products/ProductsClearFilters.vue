@@ -2,7 +2,7 @@
   <div :class="$style.clear__all__filters__wrapper">
     <button
       :class="$style.clear__all__filters"
-      @click="resetFilters"
+      @click="itemClearProp(1, 16)"
     >
       Clear All Filters
     </button>
@@ -12,9 +12,10 @@
 <script>
 export default {
   name: 'productsFilters',
-  methods: {
-    resetFilters () {
-      this.$router.go('0')
+  props: {
+    itemClearProp: {
+      type: Function,
+      required: true
     }
   }
 }

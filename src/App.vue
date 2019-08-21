@@ -8,10 +8,11 @@
 </template>
 
 <script>
+import TheHeader from '@/components/commons/TheHeader'
 export default {
   name: 'App',
   components: {
-    'the-header': () => import('@/components/commons/TheHeader')
+    'the-header': TheHeader
   }
 }
 </script>

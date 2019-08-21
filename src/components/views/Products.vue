@@ -2,7 +2,8 @@
   <div>
     <h1>This is a Products page</h1>
 
-    <loading-text :loadingProp='loading' />
+    <!-- Loader -->
+    <loading-text></loading-text>
 
     <section :class="$style.products__box">
 
@@ -24,7 +25,10 @@
         >
         </search-item>
         <!-- Clear Filter -->
-        <clear-filter></clear-filter>
+        <clear-filter
+          :itemClearProp='initialProducts'
+        >
+        </clear-filter>
       </div>
 
       <!-- PRODUCTS -->
@@ -83,15 +87,20 @@
 
 <script>
 import { getProducts, getProductsBySearch } from '@/api/Products'
+import ProductsCategory from '@/components/commons/products/ProductsCategory'
+import ProductsLimit from '@/components/commons/products/ProductsLimit'
+import SearchItem from '@/components/commons/products/ProductsSearch'
+import ClearFilter from '@/components/commons/products/ProductsClearFilters'
+import LoadingText from '@/components/commons/BaseLoading'
 
 export default {
   name: 'productsView',
   components: {
-    'products-category': () => import('@/components/commons/products/ProductsCategory'),
-    'products-limit': () => import('@/components/commons/products/ProductsLimit'),
-    'search-item': () => import('@/components/commons/products/ProductsSearch'),
-    'clear-filter': () => import('@/components/commons/products/ProductsClearFilters'),
-    'loading-text': () => import('@/components/commons/BaseLoading')
+    'products-category': ProductsCategory,
+    'products-limit': ProductsLimit,
+    'search-item': SearchItem,
+    'clear-filter': ClearFilter,
+    'loading-text': LoadingText
   },
   data () {
     return {
@@ -107,11 +116,11 @@ export default {
     }
   },
   created () {
-    this.initialProducts()
+    this.initialProducts(this.paginationNumber, this.limitNumber)
   },
   methods: {
-    initialProducts () {
-      getProducts(this.paginationNumber, this.limitNumber)
+    initialProducts (pageNum, pageLimit) {
+      getProducts(pageNum, pageLimit)
         .then(products => {
           const productRes = products.data
           this.productsLength = products.headers['x-total-count']
@@ -156,7 +165,7 @@ export default {
     },
     limitFilter (valueLimit) {
       this.limitNumber = valueLimit
-      this.initialProducts()
+      this.initialProducts(this.paginationNumber, this.limitNumber)
     },
     searchFilter (valueSearch) {
       getProductsBySearch(valueSearch)
@@ -176,7 +185,7 @@ export default {
         return
       }
       this.paginationNumber--
-      this.initialProducts()
+      this.initialProducts(this.paginationNumber, this.limitNumber)
       // Disable next click on button
       this.noNextClick = false
       window.scrollTo(0, 0)
@@ -187,7 +196,7 @@ export default {
         return
       }
       this.paginationNumber++
-      this.initialProducts()
+      this.initialProducts(this.paginationNumber, this.limitNumber)
       // Disable previous click on button
       this.noPrevClick = false
       window.scrollTo(0, 0)

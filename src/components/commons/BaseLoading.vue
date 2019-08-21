@@ -1,23 +1,11 @@
 <template functional>
   <p
     :class="$style.loading__text"
-    v-if="loadingProp"
+    v-show="props.loadingProp"
   >
     Please wait while we fetch the products for you...
   </p>
 </template>
-
-<script>
-export default {
-  name: 'loadingText',
-  props: {
-    loadingProp: {
-      type: Boolean,
-      required: true
-    }
-  }
-}
-</script>
 
 <style module>
   .loading__text {

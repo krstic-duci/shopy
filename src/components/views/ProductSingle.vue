@@ -1,9 +1,10 @@
 <template>
   <section>
 
-    <loading-text :loadingProp='loading' />
+    <!-- Loader -->
+    <loading-text></loading-text>
 
-    <div v-if="!loading">
+    <div v-show="!loading">
       <!-- Back -->
       <section>
         <a
@@ -25,11 +26,12 @@
 
 <script>
 import { getSingleProduct } from '@/api/Products'
+import LoadingText from '@/components/commons/BaseLoading'
 
 export default {
   name: 'singleProductView',
   components: {
-    'loading-text': () => import('@/components/commons/BaseLoading')
+    'loading-text': LoadingText
   },
   data () {
     return {

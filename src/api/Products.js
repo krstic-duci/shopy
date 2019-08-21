@@ -12,7 +12,6 @@ const getSingleProduct = async (id) => {
 const getProductsBySearch = async (searchBy) => {
   try {
     const response = await axios.get(`/products?q=${searchBy}`)
-    console.log(response)
     return response.data
   } catch (error) {
     console.error('Error in /products?q=... API call', error)

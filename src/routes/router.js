@@ -21,7 +21,7 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(
-          /* webpackChunkName: "aboutView" */ '@/components/views/About.vue'
+          /* webpackChunkName: "aboutView", webpackPrefetch: true */ '@/components/views/About.vue'
         ),
       children: [
         {
@@ -29,7 +29,7 @@ export default new Router({
           name: 'aboutCompany',
           component: () =>
             import(
-              /* webpackChunkName: "aboutView" */ '@/components/commons/about/AboutCompany.vue'
+              /* webpackChunkName: "aboutView", webpackPrefetch: true */ '@/components/commons/about/AboutCompany.vue'
             )
         },
         {
@@ -38,11 +38,11 @@ export default new Router({
           components: {
             default: () =>
               import(
-                /* webpackChunkName: "aboutView" */ '@/components/commons/about/AboutAlumni.vue'
+                /* webpackChunkName: "aboutView", webpackPrefetch: true */ '@/components/commons/about/AboutAlumni.vue'
               ),
             alumniRouterView: () =>
               import(
-                /* webpackChunkName: "aboutView" */ '@/components/commons/about/AboutAlumniHelp.vue'
+                /* webpackChunkName: "aboutView", webpackPrefetch: true */ '@/components/commons/about/AboutAlumniHelp.vue'
               )
           }
         }
@@ -56,7 +56,7 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(
-          /* webpackChunkName: "productsView" */ '@/components/views/Products.vue'
+          /* webpackChunkName: "productsView", webpackPrefetch: true */ '@/components/views/Products.vue'
         )
     },
     {
@@ -67,7 +67,7 @@ export default new Router({
       // which is lazy-loaded when the route is visited.
       component: () =>
         import(
-          /* webpackChunkName: "singleProductView" */ '@/components/views/ProductSingle.vue'
+          /* webpackChunkName: "singleProductView", webpackPrefetch: true */ '@/components/views/ProductSingle.vue'
         )
     },
     {

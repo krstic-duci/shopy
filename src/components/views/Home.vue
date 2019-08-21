@@ -1,11 +1,10 @@
 <template>
   <section :class="$style.home__box">
-    <!-- HOT DEALS PRODUCTS -->
-    <loading-text
-      :loadingProp='loading'
-    >
-    </loading-text>
 
+    <!-- Loader -->
+    <loading-text></loading-text>
+
+    <!-- HOT DEALS PRODUCTS -->
     <h2>Hot new deals...</h2>
 
     <div
@@ -29,11 +28,12 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import LoadingText from '@/components/commons/BaseLoading'
 
 export default {
   name: 'homeView',
   components: {
-    'loading-text': () => import('@/components/commons/BaseLoading')
+    'loading-text': LoadingText
   },
   data () {
     return {
